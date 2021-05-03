@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<document>
+	<ChannelList channel_name="tb-en">
+		<Local local_name="DE_Aurora">
+			<version addr="http://127.0.0.1/Version/"/>
+			<update addr="http://127.0.0.1/Patches/"/>
+			<guidepage addr="http://127.0.0.1/Launcher/"/>
+			<homepage addr="http://127.0.0.1/Launcher/"/>
+			<login addr="10.6.11.11" port="14300"/>
+			<channeling type="0"/>
+		</Local>
+	</ChannelList>
+</document>

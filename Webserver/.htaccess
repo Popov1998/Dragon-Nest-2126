@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+
+<IfModule mod_negotiation.c>
+    #Options -MultiViews - only for views and models/MVC or CMS#
+    Options -Indexes
+</IfModule>
+
+</IfModule>
