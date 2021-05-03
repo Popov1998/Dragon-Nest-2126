@@ -24,7 +24,7 @@ if(isset($id)){
     $exists = sqlsrv_query($conn, $sql, $param, $options);
 
     if(sqlsrv_num_rows($exists) > 0){
-        $sql = "EXEC [dbo].[__NX__GetBalance] ?, ?";
+        $sql = "EXEC [dbo].[__GetBalance] ?, ?";
         $balance = 0;
         $i = array($id, array(SQLSRV_PARAM_IN));
         $b = array($balance, array(SQLSRV_PARAM_IN));

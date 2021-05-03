@@ -15,7 +15,7 @@ if(isset($id)){
     $exists = sqlsrv_query($conn, $sql, $param, $options);
 
     if(sqlsrv_num_rows($exists) > 0){
-        $sql = "SELECT AccountID FROM [dbo].[Accounts] WHERE AccountName = ? AND NxLoginPwd = ?";
+        $sql = "SELECT AccountID FROM [dbo].[Accounts] WHERE AccountName = ? AND RLKTPassword = ?";
         $param = array($id, $password);
         $options = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
         $exists = sqlsrv_query($conn, $sql, $param, $options);

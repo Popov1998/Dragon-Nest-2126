@@ -1,0 +1,515 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+
+html {
+    position: relative;
+    min-height: 100%
+}
+
+body {
+    background: #060c1a;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    -o-background-size: cover!important;
+    -webkit-background-size: cover!important;
+    -moz-background-size: cover!important;
+    background-size: cover!important;
+    background-position: center;
+}
+
+.info {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #1d2333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.info-none {
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+}
+
+.navlink:hover {
+    cursor: pointer;
+}
+
+.navlink {
+    color: #8000ff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    float: left !important;
+    padding: 10px 0 !important;
+}
+
+.container-header {
+    width: 80% !important;
+    margin: 0 auto !important;
+}
+
+.content {
+    border: 5px solid #1d2333;
+    padding: 10px;
+    border-radius: 5px 5px;
+    width: 580px;
+    height: 401px;
+    top: 120px;
+    left: 260px;
+
+}
+
+.container {
+    border: 5px solid #1d2333;
+    padding: 10px;
+    border-radius: 5px 5px;
+    width: 280px;
+    margin: 70px 0 0 900px;
+    /* z-index: 10; */
+}
+
+.center {
+    text-align: center;
+    margin-bottom: 25px !important;
+}
+
+.point {
+    cursor: pointer;
+}
+
+input[type=text], input[type=password], input[type=email] {
+    width: 70% !important;
+    height: 50px !important;
+    border-radius: 3px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    background: #0b152e;
+    color: #ffffff;
+    text-align: center;
+}
+
+.content, .container {
+    position: absolute;
+}
+
+header {
+    background: #1d2333;
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+nav {
+    float: right !important;
+}
+
+nav ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 23px;
+    position: relative;
+}
+
+nav a {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #060c1a;
+}
+
+nav a:before {
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+.foot {
+    background: #1d2333;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+}
+   
+.foot-paragraph {
+    font-family: 'Montserrat', sans-serif;
+    color: #d9dbde;
+    text-align: center;
+}
+
+.modal-register {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content-register {
+    background-color: #060c1a;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid #1d2333;
+    border-radius: 10px 10px;
+    width: 40%;
+    height: 500px;
+}
+
+button[type=submit] {
+    background: #0b152e;
+    border: none;
+    color: #ffffff;
+    width: 150px;
+    height: 30px;
+    border-radius: 10px 10px;
+}
+
+button[type=submit]:hover {
+    cursor: pointer;
+}
+
+.close {
+    color: #1d2333;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:focus {
+    color: #1d2333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body-register{
+    height: 400px;
+    overflow-y: auto;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height:24px;
+    font-size:13px;
+    word-wrap:normal;
+    white-space:pre-wrap;
+    white-space:-moz-pre-wrap;
+    white-space:-pre-wrap;
+    white-space:-o-pre-wrap;
+    word-break:normal;
+}
+
+.modal-body-register ul {
+    display:block;
+    padding:0 0 0 20px;
+}
+
+.modal-body-register p {
+    padding-left:24px;
+}
+
+.modal-body-register th, .modal-body-register td {
+    padding:4px 6px;
+    border-right:1px solid #000000;
+    border-bottom:1px solid #000000;
+}
+
+.modal-body-register span {
+    display:block;
+    padding-left:24px;
+}
+
+.modal-body-register li {
+    list-style-type:square;
+}
+
+.modal-body-register th {
+    font-weight:bold;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* ////////////////////////////////////////////  LOGIN MODAL  /////////////////////////////////////////////////////// */
+.close-login {
+    color: #1d2333;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-login:focus {
+    color: #1d2333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-login {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content-login {
+    background-color: #060c1a;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid #1d2333;
+    border-radius: 10px 10px;
+    width: 40%;
+    height: 300px;
+}
+
+.modal-body-login{
+    height: 400px;
+    overflow-y: auto;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height:24px;
+    font-size:13px;
+    word-wrap:normal;
+    white-space:pre-wrap;
+    white-space:-moz-pre-wrap;
+    white-space:-pre-wrap;
+    white-space:-o-pre-wrap;
+    word-break:normal;
+}
+
+.modal-body-login ul {
+    display:block;
+    padding:0 0 0 20px;
+}
+
+.modal-body-login p {
+    padding-left:24px;
+}
+
+.modal-body-login th, .modal-body-login td {
+    padding:4px 6px;
+    border-right:1px solid #000000;
+    border-bottom:1px solid #000000;
+}
+
+.modal-body-login span {
+    display:block;
+    padding-left:24px;
+}
+
+.modal-body-login li {
+    list-style-type:square;
+}
+
+.modal-body-login th {
+    font-weight:bold;
+}
+
+/* ////////////////////////////////////////////  DOWNLOAD MODAL  /////////////////////////////////////////////////////// */
+.close-download {
+    color: #1d2333;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-download:focus {
+    color: #1d2333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-download {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content-download {
+    background-color: #060c1a;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid #1d2333;
+    border-radius: 10px 10px;
+    width: 40%;
+    height: 500px;
+}
+
+.modal-body-download{
+    height: 400px;
+    overflow-y: auto;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height:24px;
+    font-size:13px;
+    word-wrap:normal;
+    white-space:pre-wrap;
+    white-space:-moz-pre-wrap;
+    white-space:-pre-wrap;
+    white-space:-o-pre-wrap;
+    word-break:normal;
+}
+
+.modal-body-download ul {
+    display:block;
+    padding:0 0 0 20px;
+}
+
+.modal-body-download p {
+    padding-left:24px;
+}
+
+.modal-body-download th, .modal-body-download td {
+    padding:4px 6px;
+    border-right:1px solid #000000;
+    border-bottom:1px solid #000000;
+}
+
+.modal-body-download span {
+    display:block;
+    padding-left:24px;
+}
+
+.modal-body-download li {
+    list-style-type:square;
+}
+
+.modal-body-download th {
+    font-weight:bold;
+}
+/* ////////////////////////////////////////////  ACCOUNT MODAL  /////////////////////////////////////////////////////// */
+.close-account {
+    color: #1d2333;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-account:focus {
+    color: #1d2333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-account {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content-account {
+    background-color: #060c1a;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid #1d2333;
+    border-radius: 10px 10px;
+    width: 40%;
+    height: 500px;
+}
+
+.modal-body-account{
+    height: 400px;
+    overflow-y: auto;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height:24px;
+    font-size:13px;
+    word-wrap:normal;
+    white-space:pre-wrap;
+    white-space:-moz-pre-wrap;
+    white-space:-pre-wrap;
+    white-space:-o-pre-wrap;
+    word-break:normal;
+}
+
+.modal-body-account ul {
+    display:block;
+    padding:0 0 0 20px;
+}
+
+.modal-body-account p {
+    padding-left:24px;
+}
+
+.modal-body-account th, .modal-body-account td {
+    padding:4px 6px;
+    border-right:1px solid #000000;
+    border-bottom:1px solid #000000;
+}
+
+.modal-body-account span {
+    display:block;
+    padding-left:24px;
+}
+
+.modal-body-account li {
+    list-style-type:square;
+}
+
+.modal-body-account th {
+    font-weight:bold;
+}
+
+.modal-account-footer {
+    padding: 5px 20px;
+    border-top: 2px solid #1d2333;
+  }
