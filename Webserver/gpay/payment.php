@@ -19,7 +19,7 @@ function GetBalance($user){
     $connectionInfo  = array("Database"=>"DNMembership", "UID"=>"DragonNest", "PWD"=>"skQmsgozj!*sha");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
-    $sql = "EXEC [dbo].[__GetBalance] ?, ?";
+    $sql = "EXEC [dbo].[__NX__GetBalance] ?, ?";
     $balance = 0;
     $i = array($user, array(SQLSRV_PARAM_IN));
     $b = array($balance, array(SQLSRV_PARAM_IN));
@@ -41,7 +41,7 @@ function SetBalance($user,$amount){
     $connectionInfo  = array("Database"=>"DNMembership", "UID"=>"DragonNest", "PWD"=>"skQmsgozj!*sha");
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
-    $sql = "EXEC [dbo].[__UpdateCashBalance] ?, ?, ?";
+    $sql = "EXEC [dbo].[__NX__UpdateCashBalance] ?, ?, ?";
     $balance = 0;
     $i = array($user, array(SQLSRV_PARAM_IN));
     $a = array($amount, array(SQLSRV_PARAM_IN));

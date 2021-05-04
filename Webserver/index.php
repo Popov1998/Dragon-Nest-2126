@@ -152,7 +152,7 @@
 
                                                 unset($data);
                                             } else {
-                                                $sql = "EXEC [DNMembership].[dbo].[__CreateAccount] ?, ?, ?";
+                                                $sql = "EXEC [DNMembership].[dbo].[__NX__CreateAccount] ?, ?, ?";
                                                 $param = array($_POST['name_regis'], $_POST['pass_regis'], $_POST['mail_regis']);
                                                 $execute = sqlsrv_query($conn, $sql, $param);
 
