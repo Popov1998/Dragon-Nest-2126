@@ -15,3 +15,6 @@ Requirements:
 Lates > xampp
 
 Latest > sqlsrv dll extension for php
+
+
+# NRALUKAT means NotRALUKAT
