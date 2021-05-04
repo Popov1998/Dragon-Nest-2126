@@ -237,7 +237,7 @@
                         ";
                     } else {
                         $passmd5 = md5($_POST['pass_login']);
-                        $sql = "SELECT * FROM [DNMembership].[dbo].[Accounts] WHERE AccountName=? AND RLKTPassword=?";
+                        $sql = "SELECT * FROM [DNMembership].[dbo].[Accounts] WHERE AccountName=? AND NxLoginPwd=?";
                         $param = array($_POST['name_login'], $passmd5);
                         $result = sqlsrv_query($conn, $sql, $param);
 
