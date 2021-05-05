@@ -45,6 +45,8 @@
                             });
                         </script>
                         ";
+
+                        unset($data);
                     } else {
                         if($_POST['pass_regis'] !== $_POST['repass_regis']){
                             echo "
@@ -60,6 +62,8 @@
                                 });
                             </script>
                             ";
+
+                            unset($data);
                         } else {
                             if(strlen($_POST['name_regis']) > 8){
                                 echo "
@@ -75,6 +79,8 @@
                                     });
                                 </script>
                                 ";
+
+                                unset($data);
                             } else {
                                 if(strlen($_POST['pass_regis']) < 4){
                                     echo "
@@ -90,6 +96,8 @@
                                         });
                                     </script>
                                     ";
+
+                                    unset($data);
                                 } else {
                                     if(strlen($_POST['pass_regis']) > 10){
                                         echo "
@@ -105,6 +113,8 @@
                                             });
                                         </script>
                                         ";
+
+                                        unset($data);
                                     } else {
                                         $sql = "SELECT Email FROM [DNMembership].[dbo].[Accounts] WHERE Email = ?";
                                         $param = array($_POST['mail_regis']);
