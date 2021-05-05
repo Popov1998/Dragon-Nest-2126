@@ -29,6 +29,7 @@ body {
 .info-none {
     border-bottom: none !important;
     margin-bottom: 0 !important;
+    margin-top: 0 !important;
 }
 
 .navlink:hover {
@@ -512,4 +513,6 @@ button[type=submit]:hover {
 .modal-account-footer {
     padding: 5px 20px;
     border-top: 2px solid #1d2333;
-  }
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////// */

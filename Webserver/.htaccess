@@ -5,37 +5,12 @@
     Options -Indexes
 </IfModule>
 
+RewriteEngine On
+RewriteBase /
+RewriteRule ^Database/.* / [L,NC]
+
 <Files config.php>
     Order deny,allow
     Deny from all
 </Files>
-<Files account.php>
-    Order deny,allow
-    Deny from all
-</Files>
-<Files characters.php>
-    Order deny,allow
-    Deny from all
-</Files>
-<Files gm-online.php>
-    Order deny,allow
-    Deny from all
-</Files>
-<Files gm.php>
-    Order deny,allow
-    Deny from all
-</Files>
-<Files guilds.php>
-    Order deny,allow
-    Deny from all
-</Files>
-<Files online.php>
-    Order deny,allow
-    Deny from all
-</Files>
-<Files script.php>
-    Order deny,allow
-    Deny from all
-</Files>
-
 </IfModule>

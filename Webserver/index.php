@@ -14,7 +14,22 @@
                 <a class="navlink">Dragon Nest</a>
                 <nav>
                     <ul>
-                        <?php include "script.php"; ?>
+                        <?php 
+                            require_once "config.php";
+
+                            if(isset($_SESSION['AccountID'])){
+                                echo "
+                                <li><a id='account-btn' class='point'>Account</a></li>
+                                <li><a id='download-btn' class='point'>Download</a></li>
+                                ";
+                            } else {
+                                echo "
+                                <li><a id='register-btn' class='point'>Register</a></li>
+                                <li><a id='login-btn' class='point'>Login</a></li>
+                                <li><a id='download-btn' class='point'>Download</a></li>
+                                ";
+                            }
+                        ?>
                     </ul>
                 </nav>
             </div>
@@ -45,6 +60,8 @@
                             });
                         </script>
                         ";
+
+                        unset($data);
                     } else {
                         if($_POST['pass_regis'] !== $_POST['repass_regis']){
                             echo "
@@ -60,6 +77,8 @@
                                 });
                             </script>
                             ";
+
+                            unset($data);
                         } else {
                             if(strlen($_POST['name_regis']) > 8){
                                 echo "
@@ -75,6 +94,8 @@
                                     });
                                 </script>
                                 ";
+
+                                unset($data);
                             } else {
                                 if(strlen($_POST['pass_regis']) < 4){
                                     echo "
@@ -90,6 +111,8 @@
                                         });
                                     </script>
                                     ";
+
+                                    unset($data);
                                 } else {
                                     if(strlen($_POST['pass_regis']) > 10){
                                         echo "
@@ -105,8 +128,10 @@
                                             });
                                         </script>
                                         ";
+
+                                        unset($data);
                                     } else {
-                                        $sql = "SELECT Email FROM [DNMembership].[dbo].[Accounts] WHERE Email = ?";
+                                        $sql = "SELECT Mail FROM [DNMembership].[dbo].[Accounts] WHERE Mail = ?";
                                         $param = array($_POST['mail_regis']);
                                         $options = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
                                         $execute = sqlsrv_query($conn, $sql, $param, $options);
@@ -303,9 +328,58 @@
                 <div class="modal-content-account">
                     <span class="close-account">&times;</span>
 	                <div style="border-bottom: 2px solid #1d2333">
-                        <p class="info info-none center"><?php echo $_SESSION['AccountName']; ?></p>
+                        <p class="info info-none center"><?php 
+                        if(isset($_SESSION['AccountID'])){
+                            echo $_SESSION['AccountName']; 
+                        }
+                        ?></p>
                     </div>
                     <div class="modal-body-account">
+                        <p class="info info-none">CASH:  <?php 
+                        require_once "config.php";
+
+                        if(isset($_SESSION['AccountID'])){
+                            $sql = "{call DNMembership.dbo.__NX__GetBalance_ID (?, ?)}";
+                            $param = array($_SESSION['AccountID'], 0);
+                            $stmt = sqlsrv_query($conn, $sql, $param);
+                            
+                            if( sqlsrv_fetch( $stmt ) === false) {
+                                die( print_r( sqlsrv_errors(), true));
+                           } else {
+                               $result = sqlsrv_get_field($stmt, 0);
+                               echo "$result";
+                           }
+                        }
+                        ?></p>
+                        <p class="info info-none">CHARACTER COUNT:  <?php
+                        require_once "config.php";
+                        
+                        if(isset($_SESSION['AccountID'])){
+                            $sql = "SELECT * FROM [DNWorld].[dbo].[Characters] WHERE AccountID = ? AND AccountName = ?";
+                            $param = array($_SESSION['AccountID'], $_SESSION['AccountName']);
+                            $option = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
+                            $stmt = sqlsrv_query($conn, $sql, $param, $option);
+                            $characters = sqlsrv_num_rows($stmt);
+
+                            echo $characters;
+                        }
+                        ?></p>
+                        <p class="info info-none">ACCOUNT STATUS:  <?php
+                            require_once "config.php";
+
+                            if(isset($_SESSION['AccountID'])){
+                                $sql = "SELECT AccountID, EnglishName FROM [DNMembership].[dbo].[Accounts], [DNMembership].[dbo].[AccountStatus] WHERE AccountID = ? AND AccountLevel = AccountLevelCode";
+                                $param = array($_SESSION['AccountID']);
+                                $option = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
+                                $stmt = sqlsrv_query($conn, $sql, $param, $option);
+
+                                if(sqlsrv_num_rows($stmt) > 0){
+                                    while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
+                                        echo $row['EnglishName'];
+                                    }
+                                }
+                            }
+                        ?></p>
                     </div>
                     <div class="modal-account-footer">
                         <?php
@@ -334,12 +408,72 @@
             <center><p class="info info-none">NA NA NA</p></center>
         </div>
         <div class="container">
-            <p class="info">Online Players: <?php include "online.php"; ?></p>
-            <p class="info">Online Game Master: <?php include "gm-online.php"; ?></p>
-            <p class="info">Accounts: <?php include "account.php"; ?></p>
-            <p class="info">Game Master: <?php include "gm.php"; ?></p>
-            <p class="info">Guilds: <?php include "guilds.php"; ?></p>
-            <p class="info">Characters: <?php include "characters.php";?></p>
+            <p class="info">Online Players: <?php 
+                require_once "config.php";
+
+                $sql = "SELECT * FROM [DNMembership].[dbo].[DNAuth] WHERE CertifyingStep = ?";
+                $param = array(2);
+                $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                $stmt = sqlsrv_query( $conn, $sql , $param, $options );
+                $online = sqlsrv_num_rows($stmt);
+            
+                echo $online;
+            ?></p>
+            <p class="info">Online Game Master: <?php 
+                require_once "config.php";
+
+                $sql = "SELECT * FROM [DNMembership].[dbo].[DNAuth] WHERE CertifyingStep = ? AND AccountLevel = ?";
+                $param = array(2, 99);
+                $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                $stmt = sqlsrv_query( $conn, $sql , $param, $options );
+                $online = sqlsrv_num_rows($stmt);
+            
+                echo $online;
+            ?></p>
+            <p class="info">Accounts: <?php 
+                require_once "config.php";
+
+                $sql = "SELECT * FROM [DNMembership].[dbo].[Accounts]";
+                $param = array();
+                $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                $stmt = sqlsrv_query( $conn, $sql , $param, $options );
+                $row_count = sqlsrv_num_rows($stmt);
+            
+                echo $row_count;
+            ?></p>
+            <p class="info">Game Master: <?php 
+                require_once "config.php";
+
+                $sql = "SELECT * FROM [DNMembership].[dbo].[Accounts] WHERE AccountLevelCode = ?";
+                $param = array(99);
+                $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                $stmt = sqlsrv_query( $conn, $sql , $param, $options );
+                $row_count = sqlsrv_num_rows($stmt);
+            
+                echo $row_count;
+            ?></p>
+            <p class="info">Guilds: <?php 
+                require_once "config.php";
+
+                $sql = "SELECT * FROM [DNWorld].[dbo].[Guilds]";
+                $param = array();
+                $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                $stmt = sqlsrv_query( $conn, $sql , $param, $options );
+                $row_count = sqlsrv_num_rows($stmt);
+            
+                echo $row_count;
+            ?></p>
+            <p class="info">Characters: <?php 
+                require_once "config.php";
+
+                $sql = "SELECT * FROM [DNWorld].[dbo].[Characters]";
+                $param = array();
+                $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+                $stmt = sqlsrv_query( $conn, $sql , $param, $options );
+                $row_count = sqlsrv_num_rows($stmt);
+            
+                echo $row_count;
+            ?></p>
             <p class="info">Server Time: <?php echo date('h:i A', time()); ?></p>
             <p class="info info-none">IP Address: <!--<script type="application/javascript">
                                 function getIP(json) {
