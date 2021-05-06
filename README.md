@@ -18,3 +18,6 @@ Latest > sqlsrv dll extension for php
 
 
 # NRALUKAT means NotRALUKAT
+
+# Configuration
+Please use the Provided Database and use SQL 2019!
