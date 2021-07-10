@@ -39,6 +39,7 @@
             <?php
                 require_once "config.php";
 
+		    // DEPRECATED CODE! //
                 // if(!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST'){
                 //     $data = array($_POST['mail_regis'], $_POST['name_regis'], $_POST['pass_regis'], $_POST['repass_regis']);
                 //     unset($data);
